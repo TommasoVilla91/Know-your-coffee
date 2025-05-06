@@ -1,0 +1,242 @@
+[
+  {
+    "title": "Esayas Beriso Boku",
+    "category": "Arabica",
+    "origin": "Ethiopia",
+    "altitude": 2350,
+    "variety": ["74158"],
+    "process": "Naturale",    
+    "price": 16.5,
+    "image": "https://nowherecoffeeroasters.com/wp-content/webp-express/webp-images/uploads/2024/10/Boku.png.webp",
+    "profile": {
+      "flavours": ["Fragola", "Pesca", "Mandorla"],
+      "acidity": "Bassa",
+      "body": "Media",
+      "sweetness": "Alta"
+    }
+  },
+  {
+    "title": "Otávio Reis",
+    "category": "Arabica",
+    "origin": "Guatemala",
+    "altitude": 1110,
+    "variety": ["Yellow Bourbon"],
+    "process": "Naturale",
+    "price": 13.5,
+    "image": "https://nowherecoffeeroasters.com/wp-content/webp-express/webp-images/uploads/2023/12/otavio-scaled.jpg.webp",
+    "profile": {
+      "flavours": ["Uva passa", "Mandorla", "Cioccolato al latte", "Banana"],
+      "acidity": "Bassa",
+      "body": "Bassa",
+      "sweetness": "Alta"
+    }
+  },
+  {
+    "title": "Keramo",
+    "category": "Arabica",
+    "origin": "Brazil",
+    "altitude": 2300,
+    "variety": ["JARC 74112", "local varieties"],
+    "process": "Naturale",
+    "price": 17.5,
+    "image": "https://nowherecoffeeroasters.com/wp-content/uploads/2024/10/ethiopia-keramo.png",
+    "profile": {
+      "flavours": ["Earl grey", "Pesca", "Scorza di limone"],
+      "acidity": "Media",
+      "body": "Media",
+      "sweetness": "Media"
+    }
+  },
+  {
+    "title": "El Paseo",
+    "category": "Arabica",
+    "origin": "Colombia",
+    "altitude": 1800,
+    "variety": ["JARC 74112", "local varieties"],
+    "process": "Anaerobico",
+    "price": 16,
+    "image": "https://nowherecoffeeroasters.com/wp-content/uploads/2024/11/colombia-el-paseo.png",
+    "profile": {
+      "flavours": ["Mela rossa", "Cannella", "Vaniglia"],
+      "acidity": "Media",
+      "body": "Alta",
+      "sweetness": "Alta"
+    }
+  },
+  {
+    "title": "Fazenda Ambiental Fortaleza",
+    "category": "Blend",
+    "origin": "Brazil",
+    "altitude": 1000,
+    "variety": ["Yellow Bourbon", "Catuai"],
+    "process": "Naturale",
+    "price": 20.5,
+    "image": "https://cdn-prod.coffeedesk.io/media/3f/bf/c0/1735643428/kawa-five-elephant-brazil-fazenda-ambiental-arara-filter-2024-12.jpg",
+    "profile": {
+      "flavours": ["Frutti rossi", "Cioccolato al latte", "Caramello"],
+      "acidity": "Media",
+      "body": "Alta",
+      "sweetness": "Media"
+    }
+  },
+  {
+    "title": "Decaf Popayan",
+    "category": "Decaf",
+    "origin": "Colombia",
+    "altitude": 1650,
+    "variety": ["Castillo", "Caturra"],
+    "process": "Lavato",
+    "price": 21,
+    "image": "https://casaespresso.co.uk/wp-content/uploads/2024/02/1000025976.jpg",
+    "profile": {
+      "flavours": ["Cioccolato", "Miele", "Vaniglia"],
+      "acidity": "Bassa",
+      "body": "Media",
+      "sweetness": "Alta"
+    }
+  },
+  {
+    "title": "Finca Las Flores by Johan Vergara",
+    "category": "Arabica",
+    "origin": "Colombia",
+    "altitude": 1750,
+    "variety": ["Pink Bourbon"],
+    "process": "Anaerobico",
+    "price": 22,
+    "image": "https://nowherecoffeeroasters.com/wp-content/uploads/2024/10/colombia-las-flores.png",
+    "profile": {
+      "flavours": ["Lavanda", "Tè verde", "Albicocca", "Vaniglia"],
+      "acidity": "Media",
+      "body": "Alta",
+      "sweetness": "Media"
+    }
+  },
+  {
+    "title": "Stratoberry",
+    "category": "Arabica",
+    "origin": "Uganda",
+    "altitude": 1850,
+    "variety": ["SL28", "SL34", "Catimor"],
+    "process": "Anaerobico",
+    "price": 16,
+    "image": "https://nowherecoffeeroasters.com/wp-content/uploads/2024/04/uganda-pacchetto-1.png",
+    "profile": {
+      "flavours": ["Fiore d'arancio", "Frutti di bosco", "Vaniglia"],
+      "acidity": "Media",
+      "body": "Alta",
+      "sweetness": "Media"
+    }
+  },
+  {
+    "title": "La Bendición",
+    "category": "Arabica",
+    "origin": "Honduras",
+    "altitude": 2000,
+    "variety": ["Catimor"],
+    "process": "Naturale",
+    "price": 16,
+    "image": "https://nowherecoffeeroasters.com/wp-content/uploads/2024/05/GUATEMALA-Finca-La-Bendicion-scaled.jpg",
+    "profile": {
+      "flavours": ["Arancia", "Frutti rossi", "Frutta tropicale"],
+      "acidity": "Bassa",
+      "body": "Media",
+      "sweetness": "Alta"
+    }
+  },
+  {
+    "title": "Biftu Gudina",
+    "category": "Robusta",
+    "origin": "Ethiopia",
+    "altitude": 1100,
+    "variety": ["Kouillou"],
+    "process": "Naturale",
+    "price": 23.5,
+    "image": "https://www.vervecoffee.com/cdn/shop/files/Biftu-Gudina-12oz-Silo_1100x.png?v=1741108274",
+    "profile": {
+      "flavours": ["Cioccolato", "Caramello", "Frutta secca"],
+      "acidity": "Bassa",
+      "body": "Alta",
+      "sweetness": "Alta"
+    }
+  },
+  {
+    "title": "Kalledevarapura Estate",
+    "category": "Arabica",
+    "origin": "India",
+    "altitude": 1350,
+    "variety": ["S795", "SLN6"],
+    "process": "Naturale",
+    "price": 20.0,
+    "image": "https://www.caffepedron.it/wp-content/uploads/2023/11/India-Kalledevarapura.png",
+    "profile": {
+      "flavours": ["Cardamomo", "Pepe", "Frutta tropicale"],
+      "acidity": "Media",
+      "body": "Bassa",
+      "sweetness": "Alta"
+    }
+  },
+  {
+    "title": "Ngila Estate",
+    "category": "Arabica",
+    "origin": "Tanzania",
+    "altitude": 1700,
+    "variety": ["Kent", "Bourbon"],
+    "process": "Lavato",
+    "price": 21.7,
+    "image": "https://supremo.coffee/cdn/shop/files/Ngila-Estate-2024-1.jpg?crop=center&height=1200&v=1728911632&width=1200",
+    "profile": {
+      "flavours": ["Frutta tropicale", "Cioccolato al latte", "Caramello"],
+      "acidity": "Media",
+      "body": "Alta",
+      "sweetness": "Media"
+    }
+  },
+  {
+    "title": "Carmo de Minas",
+    "category": "Arabica",
+    "origin": "Brazil",
+    "altitude": 1300,
+    "variety": ["Yellow Bourbon"],
+    "process": "Naturale",
+    "price": 19.0,
+    "image": "https://telluridecoffeeroasters.net/wp-content/uploads/2019/07/Brazil-Carmo-De-Minas-414x414.png",
+    "profile": {
+      "flavours": ["Cioccolato al latte", "Caramello", "Frutta secca"],
+      "acidity": "Media",
+      "body": "Bassa",
+      "sweetness": "Media"
+    }
+  },
+  {
+    "title": "Monteverde",
+    "category": "Arabica",
+    "origin": "Costa Rica",
+    "altitude": 1450,
+    "variety": ["Pacas", "Bourbon"],
+    "process": "Honey",
+    "price": 21.2,
+    "image": "https://i0.wp.com/cafedemonteverde.com/wp-content/uploads/2023/10/Honey-process-label.png?fit=1000%2C1000&ssl=1",
+    "profile": {
+      "flavours": ["Rosa canina", "Ginepro", "Pompelmo"],
+      "acidity": "Media",
+      "body": "Media",
+      "sweetness": "Media"
+    }
+  },
+  {
+    "title": "Vietnam Robusta Natural",
+    "category": "Robusta",
+    "origin": "Vietnam",
+    "altitude": 800,
+    "variety": ["Robusta"],
+    "process": "Naturale",
+    "price": 17.5,
+    "image": "https://coppercowcoffee.com/cdn/shop/files/CCC-PDP-RobustaWholeBean-Front3-4_1400x.png?v=1727121349",
+    "profile": {
+      "flavours": ["Noce moscata", "Ribes", "Frutta secca"],
+      "acidity": "Media",
+      "body": "Alta",
+      "sweetness": "Media"
+    }
+  }
+]
