@@ -1,29 +1,17 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext } from "react";
+import useCoffee from "../hooks/useCoffee";
 
 const GlobalContext = createContext();
-const api = import.meta.env.VITE_API_URL
 
 function GlobalProvider({ children }) {
-    const[coffeeList, setCoffeeList] = useState([]);
-
-    useEffect(() => {
-        (async () => {
-            try {
-                const response = await fetch(`${api}/specialtycoffees`);
-                if (!response.ok) {
-                    throw new Error("Network response was not ok");
-                }
-                const data = await response.json();
-                setCoffeeList(data);
-            } catch (error) {
-                console.error("Fetch error:", error);
-            }            
-        })();     
-    }, []);
+    
+    const {coffeeList, getCoffeeList, showCoffee} = useCoffee();
 
     const providerValue = {
         // funzioni e stati globali
         coffeeList,
+        getCoffeeList,
+        showCoffee,
     };
 
     return <GlobalContext.Provider value={providerValue}>{children}</GlobalContext.Provider>;
