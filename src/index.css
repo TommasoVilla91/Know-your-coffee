@@ -33,7 +33,40 @@ a {
   padding: 10px;
 }
 
+.nav-link:hover {
+  background-color: #575757;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.navbar div:hover {
+  background-color: #575757;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.favourites-count {
+  background-color: #ff0000;
+  color: white;
+  border-radius: 50%;
+  padding: 0.1rem 0.45rem;
+}
+
 /* BODY */
+.favourites-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .search-items {
   display: flex;
   justify-content: center;
@@ -124,12 +157,6 @@ a {
   transition: transform 0.2s;
 }
 
-.card-image {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-}
-
 .card-body {
   padding: 10px;
 }
@@ -144,14 +171,23 @@ a {
   margin-bottom: 10px;
 }
 
+.favourites-btn {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
 /* COFFEE DETAILS */
 .coffee-details-page {
   height: 100vh;
   background-color: #797979;
 }
 
-.coffee-details-container {  
-  padding-top: 3rem;  
+.coffee-details-container {
+  padding-top: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: start;

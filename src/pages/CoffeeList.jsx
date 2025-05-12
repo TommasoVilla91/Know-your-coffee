@@ -4,7 +4,7 @@ import CoffeeArea from "../components/CoffeeArea";
 
 function CoffeeList() {
 
-    const { coffeeList } = useGlobalContext();
+    const { coffeeList, favourites } = useGlobalContext();
     const [sortBy, setSortBy] = useState("title");
     const [sortOrder, setSortOrder] = useState("1");
     const [selectedCategory, setSelectedCategory] = useState("all");
@@ -22,7 +22,7 @@ function CoffeeList() {
 
     const handleSearch = useCallback(
         debounce(setSearchQuery, 500)
-        , []);
+    , []);
 
     const categories = useMemo(() => {
         let uniqueCategories = [];

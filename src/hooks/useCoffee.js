@@ -8,6 +8,7 @@ function useCoffee() {
         getCoffeeList();
     }, []);
 
+    // Funzione per recuperare la lista dei caffè
     const getCoffeeList = async () => {
         try {
             const response = await fetch(`${api}/specialtycoffees`);
@@ -21,8 +22,8 @@ function useCoffee() {
         };
     };
 
-    const showCoffee = async (id) => {
-        // Funzione per mostrare il singolo caffè
+    // Funzione per mostrare il singolo caffè
+    const showCoffee = async (id) => {        
         const response = await fetch(`${api}/specialtycoffees/${id}`);
         if (!response.ok) {
             throw new Error("Errore nella risposta della rete");

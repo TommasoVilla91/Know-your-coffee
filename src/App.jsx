@@ -13,7 +13,6 @@ function App() {
         <Routes>
           <Route element={<AppLayout />}>
             <Route path="/" element={<CoffeeList />} />
-            <Route path="/favorites" element={<h1>Favorites</h1>} />
             <Route path="/specialtycoffees/:id" element={<CoffeeDetails />} />
           </Route>
         </Routes>
