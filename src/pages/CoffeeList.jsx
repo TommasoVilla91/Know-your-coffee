@@ -18,8 +18,7 @@ function CoffeeList() {
                 func(value);
             }, delay);
         };
-    };
-    
+    };    
 
     const handleSearch = useCallback(
         debounce(setSearchQuery, 500)

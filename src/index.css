@@ -1,3 +1,7 @@
+:root {
+  --compare-select-height: 30px;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -34,7 +38,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
+  gap: 5rem;
   margin-top: 2rem;
 }
 
@@ -62,6 +66,11 @@ a {
   align-items: center;
   gap: 1rem;
   height: 100%;
+  padding: 10px;
+  background-color: #818181;
+  border-radius: 5px;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .sort-btns {
@@ -74,7 +83,7 @@ a {
 .alphabetc-btn {
   background-color: #333;
   color: white;
-  padding: 10px 20px;
+  padding: 10px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
@@ -83,7 +92,7 @@ a {
 .categories-select {
   background-color: #333;
   color: white;
-  padding: 10px 10px;
+  padding: 10px;
   border-radius: 5px;
 }
 
@@ -136,10 +145,13 @@ a {
 }
 
 /* COFFEE DETAILS */
-.coffee-details-container {
-  background-color: #797979;
-  padding-top: 3rem;
+.coffee-details-page {
   height: 100vh;
+  background-color: #797979;
+}
+
+.coffee-details-container {  
+  padding-top: 3rem;  
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -171,7 +183,7 @@ a {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.coffee-details-image {
+.coffee-details-card {
   display: flex;
   gap: 5rem;
   align-items: center;
@@ -182,26 +194,125 @@ a {
   flex-direction: column;
   height: 100%;
   gap: 3rem;
+  color: black;
 }
 
 .coffee-details-body p {
   margin-bottom: 8px;
   color: #555;
-  font-size: 0.9em;
-}
-
-.coffee-details-body strong {
-  font-weight: bold;
-  color: #333;
+  font-size: 0.9rem;
 }
 
 .loading-message {
   padding: 10px;
-  font-style: italic;
   color: #777;
 }
 
 .coffee-profile {
   display: flex;
   flex-direction: column;
+}
+
+.taste {
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+
+.taste p {
+  display: inline;
+}
+
+/* Compare */
+.coffee-details-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.compare-btn {
+  background-color: #834812;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  width: 10rem;
+  font-size: 1.2rem;
+}
+
+.compare-btn:hover {
+  background-color: #6a3b0f;
+  transition: background-color 0.3s;
+}
+
+.compare {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.compare-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #f4f4f4;
+  width: 80%;
+  border-radius: 10px;
+}
+
+.compare-container h2 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.compare-select {
+  background-color: #333;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.compare-area {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 2rem;
+}
+
+.spacing {
+  height: var(--compare-select-height)
+}
+
+.other-coffee {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.compared-coffee {
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.compared-coffee .taste {
+  margin-bottom: 1rem;
 }
