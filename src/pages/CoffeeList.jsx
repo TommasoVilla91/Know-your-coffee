@@ -64,7 +64,7 @@ function CoffeeList() {
     }, [coffeeList, sortBy, sortOrder, selectedCategory, searchQuery]);
 
     return (
-        <div>
+        <div className="coffee-list-container">
             <section className="search-items">
                 <div className="searchbar-container">
                     <h3>Cerca il tuo caffè</h3>
@@ -76,7 +76,6 @@ function CoffeeList() {
                     />
                 </div>
                 <div className="sort">
-                    <h5>Ordina per</h5>
                     <div className="sort-btns">
                         <button
                             className="alphabetc-btn"

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useCallback, useContext, useState } from "react";
 import useCoffee from "../hooks/useCoffee";
 
 const GlobalContext = createContext();
@@ -10,20 +10,18 @@ function GlobalProvider({ children }) {
     const [favourites, setFavourites] = useState([]);
 
     // Funzione per aggiungere un caffè ai preferiti
-    const addToFavourites = (coffeeId) => {
+    const addToFavourites = useCallback((coffeeId) => {
         if (!favourites.includes(coffeeId)) {
             setFavourites([...favourites, coffeeId]);
-            alert("Aggiunto ai preferiti!");
         } else {
             alert("Caffè già nei preferiti!");
         };
-    };
+    }, [favourites]);
 
     // Funzione per rimuovere un caffè dai preferiti
-    const removeFromFavourites = (coffeeId) => {
+    const removeFromFavourites = useCallback((coffeeId) => {
         setFavourites(favourites.filter(id => id !== coffeeId));
-        alert("Rimosso dai preferiti!");
-    };
+    }, [favourites]);
 
     const providerValue = {
         // funzioni e stati globali

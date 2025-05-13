@@ -6,13 +6,37 @@ import { faCircle as faRegularCircle } from '@fortawesome/free-regular-svg-icons
 function ActualCoffee({ coffeeOne }) {
 
     // Funzione per generare i grafico a punti per i profili di caffè
-    const dotsLevel = () => {
+    const acidityDotsLevel = () => {
         let dots = [];
         for (let i = 0; i < 5; i++) {
-            if (i < coffeeOne.profile.acidity && i < coffeeOne.profile.sweetness && i < coffeeOne.profile.body) {
-                dots.push(<FontAwesomeIcon key={i} icon={faSolidCircle} style={{ color: "black" }} />);
+            if (i < coffeeOne.profile.acidity) {
+                dots.push(<FontAwesomeIcon key={i} icon={faSolidCircle} style={{color: "#834812"}} />);
             } else {
-                dots.push(<FontAwesomeIcon key={i} icon={faRegularCircle} style={{ color: "black" }} />);
+                dots.push(<FontAwesomeIcon key={i} icon={faRegularCircle} style={{color: "#834812"}} />);
+            };
+        };
+        return dots;
+    };
+
+    const sweetnessDotsLevel = () => {
+        let dots = [];
+        for (let i = 0; i < 5; i++) {
+            if (i < coffeeOne.profile.sweetness) {
+                dots.push(<FontAwesomeIcon key={i} icon={faSolidCircle} style={{color: "#834812"}} />);
+            } else {
+                dots.push(<FontAwesomeIcon key={i} icon={faRegularCircle} style={{color: "#834812"}} />);
+            };
+        };
+        return dots;
+    };
+
+    const bodyDotsLevel = () => {
+        let dots = [];
+        for (let i = 0; i < 5; i++) {
+            if (i < coffeeOne.profile.body) {
+                dots.push(<FontAwesomeIcon key={i} icon={faSolidCircle} style={{color: "#834812"}} />);
+            } else {
+                dots.push(<FontAwesomeIcon key={i} icon={faRegularCircle} style={{color: "#834812"}} />);
             };
         };
         return dots;
@@ -36,12 +60,12 @@ function ActualCoffee({ coffeeOne }) {
 
                 <div className="coffee-profile">
                     <span className="taste"><p>Sentori: </p><strong>{coffeeOne.profile.flavours.join(", ")}</strong></span>
-                    <p>Livello acidità: {dotsLevel()}</p>
-                    <p>Livello dolcezza: {dotsLevel()}</p>
-                    <p>Struttura corpo: {dotsLevel()}</p>
+                    <p>Livello acidità: {acidityDotsLevel()}</p>
+                    <p>Livello dolcezza: {sweetnessDotsLevel()}</p>
+                    <p>Struttura corpo: {bodyDotsLevel()}</p>
                 </div>
 
-                <p>Prezzo: <strong>{coffeeOne.price.toFixed(2)}€</strong></p>
+                <p className="comapared-price">Prezzo: <strong>{coffeeOne.price.toFixed(2)}€</strong></p>
             </div>
         </div>
     );

@@ -31,20 +31,18 @@ function CoffeeArea({ c }) {
                         <p className="title-category">{c.category}</p>
                     </div>
                 </div>
-                <div>
-                    <button
-                        className="favourites-btn"
-                        onClick={() => {
-                            if (isFavourites(c.id)) {
-                                removeFromFavourites(c.id);
-                            } else {
-                                addToFavourites(c.id);
-                            };
-                        }}
-                    >
-                        {handleFavourites(c.id)}
-                    </button>
-                </div>
+                <button
+                    className="favourites-btn"
+                    onClick={() => {
+                        if (isFavourites(c.id)) {
+                            removeFromFavourites(c.id);
+                        } else {
+                            addToFavourites(c.id);
+                        };
+                    }}
+                >
+                    {handleFavourites(c.id)}
+                </button>
             </div>
         </>
     );

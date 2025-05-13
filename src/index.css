@@ -14,7 +14,7 @@ a {
 }
 
 .active {
-  color: #3f3f3f;
+  color: #333333;
 }
 
 /* HEADER */
@@ -24,7 +24,7 @@ a {
   align-items: center;
   gap: 2rem;
   padding: 10px 20px;
-  background-color: #333;
+  background-color: #a0522d;
 }
 
 .nav-link {
@@ -34,48 +34,110 @@ a {
 }
 
 .nav-link:hover {
-  background-color: #575757;
+  background-color: #6a3b0f;
   border-radius: 5px;
   transition: background-color 0.3s;
 }
 
 .navbar div:hover {
-  background-color: #575757;
+  background-color: #6a3b0f;
   border-radius: 5px;
   transition: background-color 0.3s;
   cursor: pointer;
 }
 
 .favourites-count {
-  background-color: #ff0000;
+  background-color: #16bb00;
   color: white;
   border-radius: 50%;
   padding: 0.1rem 0.45rem;
 }
 
 /* BODY */
+/* modal */
 .favourites-modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
 
+.modal-content {
+  width: 80%;
+  background-color: #fde9dc;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+}
+
+.close-btn {
+  background-color: #a0522d;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.close-btn:hover {
+  background-color: #6a3b0f;
+  transition: background-color 0.3s;
+}
+
+.modal-row {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.fav-card {
+  background-color: #575757;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.remove-btn {
+  background-color: #ff0000;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Searchbar */
 .search-items {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5rem;
-  margin-top: 2rem;
 }
 
-/* Searchbar */
 .searchbar-container {
   display: flex;
   flex-direction: column;
@@ -88,22 +150,19 @@ a {
   width: 300px;
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #7c7c7c;
 }
 
 /* Buttons */
 .sort {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: end;
   align-items: center;
   gap: 1rem;
   height: 100%;
-  padding: 10px;
-  background-color: #818181;
   border-radius: 5px;
   color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .sort-btns {
@@ -114,7 +173,7 @@ a {
 }
 
 .alphabetc-btn {
-  background-color: #333;
+  background-color: #a0522d ;
   color: white;
   padding: 10px;
   border-radius: 5px;
@@ -122,14 +181,32 @@ a {
   cursor: pointer;
 }
 
+.alphabetc-btn:hover {
+  background-color: #6a3b0f;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
 .categories-select {
-  background-color: #333;
+  background-color: #a0522d ;
   color: white;
   padding: 10px;
   border-radius: 5px;
 }
 
+.categories-select:hover {
+  background-color: #6a3b0f;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
 /* Coffe list */
+.coffee-list-container {
+  background-color: #ffeddc;
+  padding-top: 2rem;
+  height: 100%;
+}
+
 .coffee-list {
   margin-top: 2rem;
   display: flex;
@@ -140,21 +217,26 @@ a {
 }
 
 .coffee-card {
-  background-color: #575757;
+  background-color: #fff7ef;
   border-radius: 10px;
   padding: 20px;
   width: 25%;
+  height: 12rem;
   text-align: center;
-  color: white;
+  color: #222222;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .coffee-card:hover {
   transform: scale(1.05);
   transition: transform 0.2s;
+  cursor: pointer;
+  background-color: #f4f4f4;
 }
 
 .card-body {
@@ -169,21 +251,25 @@ a {
 .title-category {
   font-size: 1rem;
   margin-bottom: 10px;
+  color: #666666;
 }
 
 .favourites-btn {
-  background-color: #333;
-  color: white;
-  padding: 10px;
+  background-color: #33333300;
+  color: #a0522d;
   border-radius: 5px;
   border: none;
+  font-size: 1.3rem;
   cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }
 
 /* COFFEE DETAILS */
 .coffee-details-page {
+  background-color: #ffeddc;
   height: 100vh;
-  background-color: #797979;
 }
 
 .coffee-details-container {
@@ -202,15 +288,18 @@ a {
   gap: 2rem;
   width: 80%;
   padding: 20px;
-  background-color: #f4f4f4;
+  background-color: #fff7ef;
+  color: black;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
 .coffee-details h1 {
   margin-top: 0;
   margin-bottom: 10px;
-  color: #333;
+  color: #6a3b0f;
+  font-size: 2.5rem;
 }
 
 .coffee-details img {
@@ -233,15 +322,24 @@ a {
   color: black;
 }
 
+.description-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10rem;
+  font-size: 1rem;
+}
+
+.description-container strong {
+  color: #68351e;
+}
+
 .coffee-details-body p {
   margin-bottom: 8px;
-  color: #555;
-  font-size: 0.9rem;
 }
 
 .loading-message {
   padding: 10px;
-  color: #777;
 }
 
 .coffee-profile {
@@ -249,13 +347,38 @@ a {
   flex-direction: column;
 }
 
+.coffee-profile strong {
+  color: #68351e;
+}
+
 .taste {
   margin-bottom: 2rem;
-  font-size: 0.9rem;
 }
 
 .taste p {
   display: inline;
+}
+
+.taste strong {
+  color: #68351e;
+}
+
+.price {
+  font-size: 1.5rem;
+  color: #a0522d;
+}
+
+.coffee-details button {
+  background-color: white;
+  color: #834812;
+  font-size: 2rem;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
 }
 
 /* Compare */
@@ -299,14 +422,16 @@ a {
   gap: 0.5rem;
   margin-top: 2rem;
   padding: 1rem;
-  background-color: #f4f4f4;
+  background-color: #fff7ef;
   width: 80%;
   border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.compare-container h2 {
+.compare-container h1 {
   text-align: center;
-  margin-bottom: 0.5rem;
+  font-size: 2.3rem;
+  color: #6a3b0f;
 }
 
 .compare-select {
@@ -339,16 +464,37 @@ a {
 }
 
 .compared-coffee {
-  font-size: 0.9rem;
+  width: 30rem;
+  font-size: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
-  background-color: #e0e0e0;
+  background-color: #fdeddc;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.compared-coffee h3 {
+  font-size: 1.5rem;
+  color: #a0522d;
+  display: inline;
+  margin-right: 0.5rem;
+}
+
+.compared-coffee h3:hover {
+  text-decoration: underline;
+}
+
+.compared-coffee strong {
+  color: #68351e;
+}
+
 .compared-coffee .taste {
   margin-bottom: 1rem;
+}
+
+.comapared-price strong {
+  font-size: 1.1rem;
+  color: #a0522d;
 }
