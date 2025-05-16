@@ -4,12 +4,13 @@ import CoffeeArea from "../components/CoffeeArea";
 
 function CoffeeList() {
 
-    const { coffeeList, favourites } = useGlobalContext();
+    const { coffeeList, categories } = useGlobalContext();
     const [sortBy, setSortBy] = useState("title");
     const [sortOrder, setSortOrder] = useState("1");
     const [selectedCategory, setSelectedCategory] = useState("all");
-    const [searchQuery, setSearchQuery] = useState("");
+    const [searchQuery, setSearchQuery] = useState("");    
 
+    // Funzione debounce di supporto
     function debounce(func, delay) {
         let timer;
         return (value) => {
@@ -20,27 +21,19 @@ function CoffeeList() {
         };
     };    
 
+    // Debounce per ritardare la comparsa del risultato della ricerca
     const handleSearch = useCallback(
         debounce(setSearchQuery, 500)
-    , []);
+    , []);    
 
-    const categories = useMemo(() => {
-        let uniqueCategories = [];
-        coffeeList.forEach((coffee) => {
-            if (!uniqueCategories.includes(coffee.category)) {
-                uniqueCategories.push(coffee.category);
-            };
-        });
-        return uniqueCategories;
-    }, [coffeeList]);
-
-    const sortIcon = sortOrder === 1 ? '▼' : '▲';
-
+    // Impostazione dell'ordine degli elementi al click sul bottone
     const handleSort = (btn) => {
         sortBy === btn ? setSortOrder(-sortOrder) : setSortBy(btn) && setSortOrder(1);
     };
 
+    // Gestione dell'ordine e della tipologia degli elementi da mostare in pagina sulla base dell'interazione dell'utente
     const sortedCoffees = useMemo(() => {
+        // Filtraggio condizioni se preme select, sort o se digita nella search-bar
         const filteredCoffees = coffeeList.filter(c => {
             const query = searchQuery.toLowerCase();
             const title = c.title.toLowerCase();
@@ -54,6 +47,7 @@ function CoffeeList() {
             };
         });
 
+        // Elementi che deve restiture in pagina
         if (sortBy === "title") {
             return [...filteredCoffees].sort((a, b) => a.title.localeCompare(b.title) * sortOrder);
         } else if (sortBy === "category") {
@@ -62,6 +56,9 @@ function CoffeeList() {
             return filteredCoffees;
         };
     }, [coffeeList, sortBy, sortOrder, selectedCategory, searchQuery]);
+
+    // Gestione frecce per far capire meglio l'ordine degli elementi all'utente
+    const sortIcon = sortOrder === 1 ? '▼' : '▲';
 
     return (
         <div className="coffee-list-container">

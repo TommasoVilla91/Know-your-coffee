@@ -1,20 +1,19 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useGlobalContext } from '../context/GlobalContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle as faSolidCircle } from '@fortawesome/free-solid-svg-icons';
-import { faCircle as faRegularCircle } from '@fortawesome/free-regular-svg-icons';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
-function ComparedCoffee({ id, coffeeOne }) {
+function ComparedCoffee({ coffeeOne, id }) {
 
-    const { coffeeList, showCoffee } = useGlobalContext();
+    const { coffeeList, showCoffee, addToFavourites, removeFromFavourites, isFavourites, handleFavourites, comparatorDotsLevelManager } = useGlobalContext();
     const [selectedId, setSelectedId] = useState("none");
     const [selectedCoffee, setSelectedCoffee] = useState(null);
     const [showComparedCoffee, setShowComparedCoffee] = useState(false);
 
     const numId = parseInt(selectedId);
 
+    // Chiamata fetch alla selezione del caffe dal select
     useEffect(() => {
         const fetch = async () => {
             try {
@@ -25,11 +24,11 @@ function ComparedCoffee({ id, coffeeOne }) {
             };
         };
         fetch();
-    }, [selectedId]);
+    }, [numId]);
 
     // Filtro lista dei caffè per escludere il caffè attualmente selezionato
     const filteredSelector = useMemo(() => {
-        return coffeeList.filter(c => c.id !== numId);
+        return coffeeList.filter(c => c.id !== id);
     }, [coffeeList, numId]);
 
     // Selezionatore per il caffè da confrontare
@@ -43,61 +42,10 @@ function ComparedCoffee({ id, coffeeOne }) {
         };
     };
 
-    // Funzione per generare i grafico a punti per i profili di caffè
-    const acidityDotsLevel = () => {
-        let dots = [];
-        for (let i = 0; i < 5; i++) {
-            if (i < selectedCoffee.specialtycoffee.profile.acidity) {
-                dots.push(<FontAwesomeIcon key={i} icon={faSolidCircle} style={{
-                    color: selectedCoffee.specialtycoffee.profile.acidity > coffeeOne.profile.acidity ? "green" :
-                     selectedCoffee.specialtycoffee.profile.acidity < coffeeOne.profile.acidity ? "red" : "#a0522d"
-                }} />);
-            } else {
-                dots.push(<FontAwesomeIcon key={i} icon={faRegularCircle} style={{
-                    color: selectedCoffee.specialtycoffee.profile.acidity > coffeeOne.profile.acidity ? "green" : 
-                    selectedCoffee.specialtycoffee.profile.acidity < coffeeOne.profile.acidity ? "red" : "#a0522d"
-                }} />);
-            };
-        };
-        return dots;
+    const handleLinkClick = () => {
+        setShowComparedCoffee(false);
+        setSelectedId("none");
     };
-
-    const sweetnessDotsLevel = () => {
-        let dots = [];
-        for (let i = 0; i < 5; i++) {
-            if (i < selectedCoffee.specialtycoffee.profile.sweetness) {
-                dots.push(<FontAwesomeIcon key={i} icon={faSolidCircle} style={{
-                    color: selectedCoffee.specialtycoffee.profile.sweetness > coffeeOne.profile.sweetness ? "green" : 
-                    selectedCoffee.specialtycoffee.profile.sweetness < coffeeOne.profile.sweetness ? "red" : "#a0522d"
-                }} />);
-            } else {
-                dots.push(<FontAwesomeIcon key={i} icon={faRegularCircle} style={{
-                    color: selectedCoffee.specialtycoffee.profile.sweetness > coffeeOne.profile.sweetness ? "green" : 
-                    selectedCoffee.specialtycoffee.profile.sweetness < coffeeOne.profile.sweetness ? "red" : "#a0522d"
-                }} />);
-            };
-        };
-        return dots;
-    };
-
-    const bodyDotsLevel = () => {
-        let dots = [];
-        for (let i = 0; i < 5; i++) {
-            if (i < selectedCoffee.specialtycoffee.profile.body) {
-                dots.push(<FontAwesomeIcon key={i} icon={faSolidCircle} style={{
-                    color: selectedCoffee.specialtycoffee.profile.body > coffeeOne.profile.body ? "green" : 
-                    selectedCoffee.specialtycoffee.profile.body < coffeeOne.profile.body ? "red" : "#a0522d"
-                }} />);
-            } else {
-                dots.push(<FontAwesomeIcon key={i} icon={faRegularCircle} style={{
-                    color: selectedCoffee.specialtycoffee.profile.body > coffeeOne.profile.body ? "green" : 
-                    selectedCoffee.specialtycoffee.profile.body < coffeeOne.profile.body ? "red" : "#a0522d"
-                }} />);
-            };
-        };
-        return dots;
-    };
-
 
     return (
         <>
@@ -116,9 +64,9 @@ function ComparedCoffee({ id, coffeeOne }) {
 
                 {showComparedCoffee && selectedCoffee ? (
                     <div className="compared-coffee" key={selectedCoffee.id}>
-                        <Link to={`/specialtycoffees/${numId}`} onClick={() => setShowComparedCoffee(false)}>
+                        <Link to={`/specialtycoffees/${numId}`} onClick={handleLinkClick}>
                             <h3>{selectedCoffee.specialtycoffee.title}</h3>
-                            <FontAwesomeIcon icon={faLink} style={{color: "#a0522d"}}/>
+                            <FontAwesomeIcon icon={faLink} style={{ color: "#a0522d" }} />
                         </Link>
 
                         <div className="coffee-description">
@@ -134,18 +82,20 @@ function ComparedCoffee({ id, coffeeOne }) {
                             </p>
                             <p><span>Altitudine: </span>
                                 <strong>
-                                    <span style={{ color: selectedCoffee.specialtycoffee.altitude > coffeeOne.altitude ? "green" : 
-                                        selectedCoffee.specialtycoffee.altitude < coffeeOne.altitude ? "red" : "#a0522d"}}>
-                                        {selectedCoffee.specialtycoffee.altitude} mt.</span> 
+                                    <span style={{
+                                        color: selectedCoffee.specialtycoffee.altitude > coffeeOne.altitude ? "green" :
+                                            selectedCoffee.specialtycoffee.altitude < coffeeOne.altitude ? "red" : "#a0522d"
+                                    }}>
+                                        {selectedCoffee.specialtycoffee.altitude} mt.</span>
                                 </strong>
                             </p>
                             <p><span>Varietà: </span>
                                 <strong>
                                     {selectedCoffee.specialtycoffee.variety.map((v, i) => (
-                                        <>
-                                            <span style={{ color: coffeeOne.variety.includes(v) ? "green" : "red" }}>{v}</span>
-                                            {i < selectedCoffee.specialtycoffee.variety.length - 1 ? ", " : ""}
-                                        </>
+                                            <span key={i} style={{ color: coffeeOne.variety.includes(v) ? "green" : "red" }}>
+                                                {v}
+                                                {i < selectedCoffee.specialtycoffee.variety.length - 1 ? ", " : ""}
+                                            </span>
                                     ))}
                                 </strong>
                             </p>
@@ -160,21 +110,21 @@ function ComparedCoffee({ id, coffeeOne }) {
                             <span className="taste"><p>Sentori: </p>
                                 <strong>
                                     {selectedCoffee.specialtycoffee.profile.flavours.map((f, i) => (
-                                        <>
-                                            <span key={f} style={{ color: coffeeOne.profile.flavours.includes(f) ? "green" : "red" }}>{f}</span>
-                                            {i < selectedCoffee.specialtycoffee.profile.flavours.length - 1 ? ", " : ""}                                        
-                                        </>
+                                            <span key={f} style={{ color: coffeeOne.profile.flavours.includes(f) ? "green" : "red" }}>
+                                                {f}
+                                                {i < selectedCoffee.specialtycoffee.profile.flavours.length - 1 ? ", " : ""}
+                                            </span>
                                     ))}
                                 </strong>
                             </span>
                             <p><span>Livello acidità: </span>
-                                {acidityDotsLevel()}
+                                {comparatorDotsLevelManager(selectedCoffee.specialtycoffee.profile.acidity, coffeeOne.profile.acidity)}
                             </p>
                             <p><span>Livello dolcezza: </span>
-                                {sweetnessDotsLevel()}
+                                {comparatorDotsLevelManager(selectedCoffee.specialtycoffee.profile.sweetness, coffeeOne.profile.sweetness)}
                             </p>
                             <p><span>Struttura corpo: </span>
-                                {bodyDotsLevel()}
+                                {comparatorDotsLevelManager(selectedCoffee.specialtycoffee.profile.body, coffeeOne.profile.body)}
                             </p>
                         </div>
                         <p className='comapared-price'><span>Prezzo: </span>
@@ -182,6 +132,18 @@ function ComparedCoffee({ id, coffeeOne }) {
                                 {selectedCoffee.specialtycoffee.price.toFixed(2)}€
                             </strong>
                         </p>
+                        <button
+                            className="favourites-btn"
+                            onClick={() => {
+                                if (isFavourites(selectedCoffee.specialtycoffee.id)) {
+                                    removeFromFavourites(selectedCoffee.specialtycoffee.id);
+                                } else {
+                                    addToFavourites(selectedCoffee.specialtycoffee.id);
+                                };
+                            }}
+                        >
+                            {handleFavourites(selectedCoffee.specialtycoffee.id)}
+                        </button>
                     </div>
                 ) : (
                     <p></p>

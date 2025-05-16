@@ -1,50 +1,12 @@
 import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle as faSolidCircle } from '@fortawesome/free-solid-svg-icons';
-import { faCircle as faRegularCircle } from '@fortawesome/free-regular-svg-icons';
+import { useGlobalContext } from "../context/GlobalContext";
 
 function ActualCoffee({ coffeeOne }) {
 
-    // Funzione per generare i grafico a punti per i profili di caffè
-    const acidityDotsLevel = () => {
-        let dots = [];
-        for (let i = 0; i < 5; i++) {
-            if (i < coffeeOne.profile.acidity) {
-                dots.push(<FontAwesomeIcon key={i} icon={faSolidCircle} style={{color: "#834812"}} />);
-            } else {
-                dots.push(<FontAwesomeIcon key={i} icon={faRegularCircle} style={{color: "#834812"}} />);
-            };
-        };
-        return dots;
-    };
-
-    const sweetnessDotsLevel = () => {
-        let dots = [];
-        for (let i = 0; i < 5; i++) {
-            if (i < coffeeOne.profile.sweetness) {
-                dots.push(<FontAwesomeIcon key={i} icon={faSolidCircle} style={{color: "#834812"}} />);
-            } else {
-                dots.push(<FontAwesomeIcon key={i} icon={faRegularCircle} style={{color: "#834812"}} />);
-            };
-        };
-        return dots;
-    };
-
-    const bodyDotsLevel = () => {
-        let dots = [];
-        for (let i = 0; i < 5; i++) {
-            if (i < coffeeOne.profile.body) {
-                dots.push(<FontAwesomeIcon key={i} icon={faSolidCircle} style={{color: "#834812"}} />);
-            } else {
-                dots.push(<FontAwesomeIcon key={i} icon={faRegularCircle} style={{color: "#834812"}} />);
-            };
-        };
-        return dots;
-    };
-
+    const { dotsLevelManager } = useGlobalContext();
 
     return (
-        <div className="other-coffee">
+        <div className="actual-coffee">
             <div className="spacing"></div>
             <div className="compared-coffee">
 
@@ -60,9 +22,9 @@ function ActualCoffee({ coffeeOne }) {
 
                 <div className="coffee-profile">
                     <span className="taste"><p>Sentori: </p><strong>{coffeeOne.profile.flavours.join(", ")}</strong></span>
-                    <p>Livello acidità: {acidityDotsLevel()}</p>
-                    <p>Livello dolcezza: {sweetnessDotsLevel()}</p>
-                    <p>Struttura corpo: {bodyDotsLevel()}</p>
+                    <p>Livello acidità: {dotsLevelManager(coffeeOne.profile.acidity)}</p>
+                    <p>Livello dolcezza: {dotsLevelManager(coffeeOne.profile.sweetness)}</p>
+                    <p>Struttura corpo: {dotsLevelManager(coffeeOne.profile.body)}</p>
                 </div>
 
                 <p className="comapared-price">Prezzo: <strong>{coffeeOne.price.toFixed(2)}€</strong></p>

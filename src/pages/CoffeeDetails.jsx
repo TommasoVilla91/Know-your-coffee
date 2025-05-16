@@ -13,6 +13,7 @@ function CoffeeDetails() {
 
     const numId = parseInt(id);
 
+    // Chiamata fetch per ottere i dettagli del singolo caffe
     useEffect(() => {
         const fetchCoffee = async () => {
             try {
@@ -51,7 +52,7 @@ function CoffeeDetails() {
             <CompareArea
                 show={showCompare}
                 actualCoffee={singleCoffee}
-                id={id}
+                id={numId}
             />
         </div>
     );

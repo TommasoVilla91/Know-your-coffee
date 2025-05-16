@@ -17,6 +17,10 @@ a {
   color: #333333;
 }
 
+body {
+  background-color: #ffeddc;
+}
+
 /* HEADER */
 .navbar {
   display: flex;
@@ -82,6 +86,15 @@ a {
   position: relative;
 }
 
+.modal-content h1 {
+  color: #6a3b0f;
+}
+
+.fav-infos {
+  display: flex;
+  gap: 1rem;
+}
+
 .close-btn {
   background-color: #a0522d;
   color: white;
@@ -109,25 +122,52 @@ a {
 }
 
 .fav-card {
-  background-color: #575757;
+  background-color: #fff7ef;
+  width: 13rem;
+  min-height: 8.5rem;
   border-radius: 10px;
   padding: 20px;
   text-align: center;
-  color: white;
+  color: #222222;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.fav-card:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s;
+  background-color: #f4f4f4;
+}
+
+.fav-card a {
+  color: #a0522d;
+}
+
+.fav-card a:hover {
+  text-decoration: underline;
 }
 
 .remove-btn {
-  background-color: #ff0000;
+  background-color: #a0522d;
   color: white;
-  padding: 10px;
+  padding: 5px;
   border-radius: 5px;
   border: none;
   cursor: pointer;
+  font-size: 0.8rem;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.remove-btn:hover {
+  background-color: #6a3b0f;
+  transition: background-color 0.3s;
 }
 
 /* Searchbar */
@@ -150,7 +190,8 @@ a {
   width: 300px;
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid #7c7c7c;
+  border: 1px solid #a0522d;
+  background-color: #fffcf7;
 }
 
 /* Buttons */
@@ -192,6 +233,7 @@ a {
   color: white;
   padding: 10px;
   border-radius: 5px;
+  border: #68351e;
 }
 
 .categories-select:hover {
@@ -202,9 +244,7 @@ a {
 
 /* Coffe list */
 .coffee-list-container {
-  background-color: #ffeddc;
   padding-top: 2rem;
-  height: 100%;
 }
 
 .coffee-list {
@@ -246,6 +286,11 @@ a {
 .card-body h2 {
   font-size: 1.5rem;
   margin-bottom: 10px;
+  color: #6a3b0f
+}
+
+.card-body h2:hover {
+  text-decoration: underline;
 }
 
 .title-category {
@@ -453,7 +498,7 @@ a {
   height: var(--compare-select-height)
 }
 
-.other-coffee {
+.other-coffee, .actual-coffee {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -464,7 +509,7 @@ a {
 }
 
 .compared-coffee {
-  width: 30rem;
+  width: 20rem;
   font-size: 1rem;
   display: flex;
   flex-direction: column;
@@ -473,6 +518,11 @@ a {
   background-color: #fdeddc;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.actual-coffee h3:hover {
+  text-decoration: none;
 }
 
 .compared-coffee h3 {
@@ -482,7 +532,7 @@ a {
   margin-right: 0.5rem;
 }
 
-.compared-coffee h3:hover {
+.other-coffee h3:hover {
   text-decoration: underline;
 }
 
@@ -497,4 +547,24 @@ a {
 .comapared-price strong {
   font-size: 1.1rem;
   color: #a0522d;
+}
+
+
+
+
+@media screen and (max-width: 1332px) {
+  .coffee-details .coffee-profile p {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 1225px) {
+  .description-container {
+    gap: 2.5rem
+  }
+
+  .coffee-details-card {
+    gap: 2rem;
+  }
 }

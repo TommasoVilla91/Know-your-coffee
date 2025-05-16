@@ -1,9 +1,7 @@
 import ComparedCoffee from "./ComparedCoffee";
 import ActualCoffee from "./ActualCoffee";
 
-function CompareArea({ show, actualCoffee, id }) {
-
-    
+function CompareArea({ show, actualCoffee, id }) {    
 
     return show && (
         <section className="compare">
@@ -11,8 +9,7 @@ function CompareArea({ show, actualCoffee, id }) {
                 <div>
                     <h1>Confronta i caffè</h1>
                 </div>
-                <div className="compare-area">
-                    
+                <div className="compare-area">                    
                     <ActualCoffee
                         coffeeOne={actualCoffee.specialtycoffee}
                     />
@@ -24,7 +21,7 @@ function CompareArea({ show, actualCoffee, id }) {
                 </div>
             </div>
         </section>
-    )
-}
+    );
+};
 
 export default CompareArea;
