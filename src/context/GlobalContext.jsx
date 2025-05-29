@@ -34,22 +34,23 @@ function GlobalProvider({ children }) {
         };
     }, [favourites]);
 
-    // Funzione per verificare se un caffè è nei preferiti
-    const isFavourites = useCallback((id) => {favourites.some(f => f === id)}, [favourites]);
-
-    // Funzione per aggiungere un caffè ai preferiti
-    const addToFavourites = useCallback((coffeeId) => {
-        if (!favourites.includes(coffeeId)) {
-            setFavourites([...favourites, coffeeId]);
-        } else {
-            alert("Caffè già nei preferiti!");
+    // Funzione per rimuovere un caffè dai preferiti dal modale dei preferiti
+    const removeFromFavourites = useCallback((coffeeId) => {
+        if (favourites.includes(coffeeId)) {
+            setFavourites(prev => prev.filter(id => id !== coffeeId));
         };
     }, [favourites]);
 
-    // Funzione per rimuovere un caffè dai preferiti
-    const removeFromFavourites = useCallback((coffeeId) => {
-        setFavourites(favourites.filter(id => id !== coffeeId));
-    }, [favourites]);
+    // Funzione per aggiungere e rimuovere un caffè dai preferiti tramite l'icona
+    const toggleFavorites = useCallback((coffeeId) => {
+        setFavourites(prev => {
+            if(prev.includes(coffeeId)) {
+                return prev.filter(id => id !== coffeeId);
+            } else {
+                return [...prev, coffeeId];
+            };
+        });
+    }, [])
 
     // Funzioni per generare i grafico a punti per i profili di caffè
     const comparatorDotsLevelManager = useCallback((coffeLeft, coffeeRight) => {
@@ -67,7 +68,7 @@ function GlobalProvider({ children }) {
             );
         };
         return dots;
-    }, [])
+    }, []);
 
     const dotsLevelManager = useCallback((level) => {
         let dots = [];
@@ -90,12 +91,11 @@ function GlobalProvider({ children }) {
         showCoffee,
         showFavorites,
         setShowFavorites,
-        addToFavourites,
+        toggleFavorites,
         favourites,
         removeFromFavourites,
         categories,
         handleFavourites,
-        isFavourites,
         dotsLevelManager,
         comparatorDotsLevelManager
     };

@@ -38,7 +38,7 @@ function FavoritesModal({ show, title, onClose }) {
                                     <Link to={`/specialtycoffees/${f.specialtycoffee.id}`} onClick={onClose}>
                                         <h3>{f.specialtycoffee.title}</h3>
                                     </Link>
-                                    <p>{f.specialtycoffee.category}</p>
+                                    <p className='process'>{f.specialtycoffee.category}</p>
                                 </div>
 
                                 <p>{f.specialtycoffee.price.toFixed(2)} €</p>

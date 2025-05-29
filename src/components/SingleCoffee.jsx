@@ -3,7 +3,7 @@ import { useGlobalContext } from '../context/GlobalContext';
 
 function SingleCoffee({ coffeeInfo }) {
 
-    const { addToFavourites, removeFromFavourites, handleFavourites, isFavourites, dotsLevelManager } = useGlobalContext();
+    const { handleFavourites, toggleFavorites, dotsLevelManager } = useGlobalContext();
 
     return (
         <div className="coffee-details">
@@ -22,7 +22,7 @@ function SingleCoffee({ coffeeInfo }) {
                             <p>Origine: <strong>{coffeeInfo.origin}</strong></p>
                             <p>Altitudine: <strong>{coffeeInfo.altitude} mt.</strong></p>
                             <p>Varietà: <strong>{coffeeInfo.variety.join(", ")}</strong></p>
-                            <p>Processo di lavorazione: <strong>{coffeeInfo.process}</strong></p>
+                            <p>Tipologia di chicco: <strong>{coffeeInfo.bean}</strong></p>
                         </div>
 
                         <div className="coffee-profile">
@@ -45,13 +45,7 @@ function SingleCoffee({ coffeeInfo }) {
 
             <button
                 className="favourites-btn"
-                onClick={() => {
-                    if (isFavourites(coffeeInfo.id)) {
-                        removeFromFavourites(coffeeInfo.id);
-                    } else {
-                        addToFavourites(coffeeInfo.id);
-                    };
-                }}
+                onClick={() => toggleFavorites(coffeeInfo.id)}
             >
                 {handleFavourites(coffeeInfo.id)}
             </button>

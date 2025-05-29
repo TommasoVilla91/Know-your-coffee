@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 function ComparedCoffee({ coffeeOne, id }) {
 
-    const { coffeeList, showCoffee, addToFavourites, removeFromFavourites, isFavourites, handleFavourites, comparatorDotsLevelManager } = useGlobalContext();
+    const { coffeeList, showCoffee, toggleFavorites, handleFavourites, comparatorDotsLevelManager } = useGlobalContext();
     const [selectedId, setSelectedId] = useState("none");
     const [selectedCoffee, setSelectedCoffee] = useState(null);
     const [showComparedCoffee, setShowComparedCoffee] = useState(false);
@@ -29,7 +29,7 @@ function ComparedCoffee({ coffeeOne, id }) {
     // Filtro lista dei caffè per escludere il caffè attualmente selezionato
     const filteredSelector = useMemo(() => {
         return coffeeList.filter(c => c.id !== id);
-    }, [coffeeList, numId]);
+    }, [coffeeList, numId, id]);
 
     // Selezionatore per il caffè da confrontare
     const handleSelectChange = (e) => {
@@ -99,9 +99,9 @@ function ComparedCoffee({ coffeeOne, id }) {
                                     ))}
                                 </strong>
                             </p>
-                            <p><span>Processo di lavorazione: </span>
-                                <strong style={{ color: selectedCoffee.specialtycoffee.process === coffeeOne.process ? "green" : "red" }}>
-                                    {selectedCoffee.specialtycoffee.process}
+                            <p><span>Tipologia di chicco: </span>
+                                <strong style={{ color: selectedCoffee.specialtycoffee.bean === coffeeOne.bean ? "green" : "red" }}>
+                                    {selectedCoffee.specialtycoffee.bean}
                                 </strong>
                             </p>
                         </div>
@@ -134,13 +134,7 @@ function ComparedCoffee({ coffeeOne, id }) {
                         </p>
                         <button
                             className="favourites-btn"
-                            onClick={() => {
-                                if (isFavourites(selectedCoffee.specialtycoffee.id)) {
-                                    removeFromFavourites(selectedCoffee.specialtycoffee.id);
-                                } else {
-                                    addToFavourites(selectedCoffee.specialtycoffee.id);
-                                };
-                            }}
+                            onClick={() => toggleFavorites(selectedCoffee.specialtycoffee.id)}
                         >
                             {handleFavourites(selectedCoffee.specialtycoffee.id)}
                         </button>

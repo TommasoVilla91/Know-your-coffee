@@ -24,7 +24,7 @@ function CoffeeDetails() {
             };
         };
         fetchCoffee();
-    }, [id]);
+    }, [numId]);
 
 
     return (

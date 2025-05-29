@@ -1,5 +1,5 @@
 import { useGlobalContext } from "../context/GlobalContext";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import CoffeeArea from "../components/CoffeeArea";
 
 function CoffeeList() {
@@ -8,7 +8,12 @@ function CoffeeList() {
     const [sortBy, setSortBy] = useState("title");
     const [sortOrder, setSortOrder] = useState("1");
     const [selectedCategory, setSelectedCategory] = useState("all");
-    const [searchQuery, setSearchQuery] = useState("");    
+    const [searchQuery, setSearchQuery] = useState("");
+    const searchRef = useRef();
+
+    useEffect(() => {
+        searchRef.current.focus();
+    }, []);
 
     // Funzione debounce di supporto
     function debounce(func, delay) {
@@ -24,7 +29,7 @@ function CoffeeList() {
     // Debounce per ritardare la comparsa del risultato della ricerca
     const handleSearch = useCallback(
         debounce(setSearchQuery, 500)
-    , []);    
+    , []);
 
     // Impostazione dell'ordine degli elementi al click sul bottone
     const handleSort = (btn) => {
@@ -70,6 +75,7 @@ function CoffeeList() {
                         className="searchbar"
                         placeholder="Cerca un caffè"
                         onChange={e => handleSearch(e.target.value)}
+                        ref={searchRef}
                     />
                 </div>
                 <div className="sort">
@@ -85,7 +91,7 @@ function CoffeeList() {
                             value={selectedCategory}
                             onChange={e => setSelectedCategory(e.target.value)}
                         >
-                            <option value="all">Tutte le varietà</option>
+                            <option value="all">Tutti i processi di essicazione</option>
                             {categories.map((category, i) => (
                                 <option key={i} value={category}>
                                     {category}
@@ -95,6 +101,8 @@ function CoffeeList() {
                     </div>
                 </div>
             </section>
+
+            
             <section className="coffee-list">
                 {sortedCoffees.length > 0 ? (
                     sortedCoffees.map((coffee) => (

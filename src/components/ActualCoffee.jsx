@@ -17,7 +17,7 @@ function ActualCoffee({ coffeeOne }) {
                     <p>Origine: <strong>{coffeeOne.origin}</strong></p>
                     <p>Altitudine: <strong>{coffeeOne.altitude} mt.</strong></p>
                     <p>Varietà: <strong>{coffeeOne.variety.join(", ")}</strong></p>
-                    <p>Processo di lavorazione: <strong>{coffeeOne.process}</strong></p>
+                    <p>Tipologia di chicco: <strong>{coffeeOne.bean}</strong></p>
                 </div>
 
                 <div className="coffee-profile">

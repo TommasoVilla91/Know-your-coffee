@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContext";
 
 function CoffeeArea({ c }) {
-    const { addToFavourites, removeFromFavourites, isFavourites, handleFavourites } = useGlobalContext();
+    const { handleFavourites, toggleFavorites } = useGlobalContext();
 
     const navigate = useNavigate();
 
@@ -16,15 +16,10 @@ function CoffeeArea({ c }) {
                         <p className="title-category">{c.category}</p>
                     </div>
                 </div>
+                
                 <button
                     className="favourites-btn"
-                    onClick={() => {
-                        if (isFavourites(c.id)) {
-                            removeFromFavourites(c.id);
-                        } else {
-                            addToFavourites(c.id);
-                        };
-                    }}
+                    onClick={() => toggleFavorites(c.id)}
                 >
                     {handleFavourites(c.id)}
                 </button>
