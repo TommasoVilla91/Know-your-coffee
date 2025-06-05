@@ -34,7 +34,6 @@ function useCoffee() {
 
     return {
         coffeeList,
-        getCoffeeList,
         showCoffee,
     };
 };

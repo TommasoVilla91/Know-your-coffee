@@ -13,6 +13,7 @@ function GlobalProvider({ children }) {
     const { coffeeList, getCoffeeList, showCoffee } = useCoffee();
     const [showFavorites, setShowFavorites] = useState(false);
     const [favourites, setFavourites] = useState([]);
+    const [showComparedCoffee, setShowComparedCoffee] = useState(false);
 
     // Funzione per ottenere tutte le varità di caffè
     const categories = useMemo(() => {
@@ -25,6 +26,24 @@ function GlobalProvider({ children }) {
         return uniqueCategories;
     }, [coffeeList]);
 
+    // Funzione per aggiungere e rimuovere un caffè dai preferiti tramite l'icona
+    const toggleFavorites = useCallback((coffeeId) => {
+        setFavourites(prev => { 
+            if(prev.includes(coffeeId)) {
+                return prev.filter(id => id !== coffeeId);
+            } else {
+                return [...prev, coffeeId];
+            };
+        });
+    }, []);
+
+    // Funzione per rimuovere un caffè dai preferiti dal modale dei preferiti
+    const removeFromFavourites = useCallback((coffeeId) => {
+        if (favourites.includes(coffeeId)) {
+            setFavourites(prev => prev.filter(id => id !== coffeeId));
+        };
+    }, [favourites]);
+
     // Gestione icone dei preferiti
     const handleFavourites = useCallback((id) => {
         if (favourites.some(f => f === id)) {
@@ -34,35 +53,17 @@ function GlobalProvider({ children }) {
         };
     }, [favourites]);
 
-    // Funzione per rimuovere un caffè dai preferiti dal modale dei preferiti
-    const removeFromFavourites = useCallback((coffeeId) => {
-        if (favourites.includes(coffeeId)) {
-            setFavourites(prev => prev.filter(id => id !== coffeeId));
-        };
-    }, [favourites]);
-
-    // Funzione per aggiungere e rimuovere un caffè dai preferiti tramite l'icona
-    const toggleFavorites = useCallback((coffeeId) => {
-        setFavourites(prev => {
-            if(prev.includes(coffeeId)) {
-                return prev.filter(id => id !== coffeeId);
-            } else {
-                return [...prev, coffeeId];
-            };
-        });
-    }, [])
-
     // Funzioni per generare i grafico a punti per i profili di caffè
     const comparatorDotsLevelManager = useCallback((coffeLeft, coffeeRight) => {
-        const color = coffeLeft > coffeeRight ? "green" :
-            coffeLeft < coffeeRight ? "red" : "#a0522d";
+        const color = coffeeRight > coffeLeft ? "green" :
+            coffeeRight < coffeLeft ? "red" : "#a0522d";
 
         let dots = [];
         for (let i = 0; i < 5; i++) {
             dots.push(
-                <FontAwesomeIcon 
+                <FontAwesomeIcon
                     key={i}
-                    icon={i < coffeLeft ? faSolidCircle : faRegularCircle}
+                    icon={i < coffeeRight ? faSolidCircle : faRegularCircle}
                     style={{color: color}}
                 />
             );
@@ -84,6 +85,7 @@ function GlobalProvider({ children }) {
         return dots;
     }, []);
 
+
     const providerValue = {
         // funzioni e stati globali
         coffeeList,
@@ -97,7 +99,9 @@ function GlobalProvider({ children }) {
         categories,
         handleFavourites,
         dotsLevelManager,
-        comparatorDotsLevelManager
+        comparatorDotsLevelManager,
+        showComparedCoffee,
+        setShowComparedCoffee
     };
 
     return <GlobalContext.Provider value={providerValue}>{children}</GlobalContext.Provider>;

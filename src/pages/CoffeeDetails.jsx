@@ -40,6 +40,7 @@ function CoffeeDetails() {
                 )}
 
             </section>
+            
             <div className="coffee-details-btn">
                 <button
                     className="compare-btn"

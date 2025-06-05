@@ -8,6 +8,7 @@ function CompareArea({ show, actualCoffee, id }) {
             <div className="compare-container">
                 <div>
                     <h1>Confronta i caffè</h1>
+                    <h3>Compara un altro dei nostri caffè con {actualCoffee.specialtycoffee.title}</h3>
                 </div>
                 <div className="compare-area">                    
                     <ActualCoffee

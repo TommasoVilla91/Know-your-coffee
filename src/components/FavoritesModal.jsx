@@ -7,19 +7,34 @@ import { Link } from 'react-router-dom';
 
 function FavoritesModal({ show, title, onClose }) {
 
-    const { favourites, removeFromFavourites, showCoffee } = useGlobalContext();
+    const { favourites, removeFromFavourites, showCoffee, setShowComparedCoffee } = useGlobalContext();
     const [favList, setFavList] = useState([]);
 
     // Chiamata fetch per recuperare tutti i caffe salvati nell'array dei preferiti
     useEffect(() => {
-        const favPromises = favourites.map(f => {
-            return showCoffee(f);
-        });
+        const fetchFavourites = async () => {
+            const favPromises = favourites.map(f => {
+                return showCoffee(f);
+            });
+    
+            try {
+                const favCoffees = await Promise.all(favPromises)
+                setFavList(favCoffees);
+    
+            } catch (error) {
+                console.error("Errore durante il recupero dei caffè preferiti:", error);
+            };
+        };
 
-        Promise.all(favPromises)
-            .then(res => setFavList(res))
-            .catch(err => console.error("Errore nel recupero dei preferiti!", err));
+        fetchFavourites();
     }, [favourites]);
+
+
+    // Al click del link, chiude il modal e resetta il comparatore
+    const handleLinkClick = () => {
+        setShowComparedCoffee(false);
+        onClose();
+    };
 
 
     return show && ReactDOM.createPortal(
@@ -35,9 +50,10 @@ function FavoritesModal({ show, title, onClose }) {
                             <div key={f.specialtycoffee.id} className='fav-card'>
 
                                 <div>
-                                    <Link to={`/specialtycoffees/${f.specialtycoffee.id}`} onClick={onClose}>
+                                    <Link to={`/specialtycoffees/${f.specialtycoffee.id}`} onClick={handleLinkClick}>
                                         <h3>{f.specialtycoffee.title}</h3>
                                     </Link>
+                                    
                                     <p className='process'>{f.specialtycoffee.category}</p>
                                 </div>
 

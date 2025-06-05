@@ -6,10 +6,9 @@ import { Link } from 'react-router-dom';
 
 function ComparedCoffee({ coffeeOne, id }) {
 
-    const { coffeeList, showCoffee, toggleFavorites, handleFavourites, comparatorDotsLevelManager } = useGlobalContext();
+    const { coffeeList, showCoffee, toggleFavorites, handleFavourites, comparatorDotsLevelManager, showComparedCoffee, setShowComparedCoffee } = useGlobalContext();
     const [selectedId, setSelectedId] = useState("none");
     const [selectedCoffee, setSelectedCoffee] = useState(null);
-    const [showComparedCoffee, setShowComparedCoffee] = useState(false);
 
     const numId = parseInt(selectedId);
 
@@ -54,7 +53,7 @@ function ComparedCoffee({ coffeeOne, id }) {
                     className="compare-select"
                     onChange={handleSelectChange}
                 >
-                    <option value="none">Seleziona un caffè da confrontare</option>
+                    <option value="none">Seleziona un caffè</option>
                     {filteredSelector.map((coffee) => (
                         <option key={coffee.id} value={coffee.id}>
                             {coffee.title}
@@ -64,9 +63,12 @@ function ComparedCoffee({ coffeeOne, id }) {
 
                 {showComparedCoffee && selectedCoffee ? (
                     <div className="compared-coffee" key={selectedCoffee.id}>
+
                         <Link to={`/specialtycoffees/${numId}`} onClick={handleLinkClick}>
+
                             <h3>{selectedCoffee.specialtycoffee.title}</h3>
                             <FontAwesomeIcon icon={faLink} style={{ color: "#a0522d" }} />
+                            
                         </Link>
 
                         <div className="coffee-description">
@@ -118,13 +120,13 @@ function ComparedCoffee({ coffeeOne, id }) {
                                 </strong>
                             </span>
                             <p><span>Livello acidità: </span>
-                                {comparatorDotsLevelManager(selectedCoffee.specialtycoffee.profile.acidity, coffeeOne.profile.acidity)}
+                                {comparatorDotsLevelManager(coffeeOne.profile.acidity, selectedCoffee.specialtycoffee.profile.acidity)}
                             </p>
                             <p><span>Livello dolcezza: </span>
-                                {comparatorDotsLevelManager(selectedCoffee.specialtycoffee.profile.sweetness, coffeeOne.profile.sweetness)}
+                                {comparatorDotsLevelManager(coffeeOne.profile.sweetness, selectedCoffee.specialtycoffee.profile.sweetness)}
                             </p>
                             <p><span>Struttura corpo: </span>
-                                {comparatorDotsLevelManager(selectedCoffee.specialtycoffee.profile.body, coffeeOne.profile.body)}
+                                {comparatorDotsLevelManager(coffeeOne.profile.body, selectedCoffee.specialtycoffee.profile.body)}
                             </p>
                         </div>
                         <p className='comapared-price'><span>Prezzo: </span>
