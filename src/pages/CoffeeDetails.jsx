@@ -38,7 +38,6 @@ function CoffeeDetails() {
                 ) : (
                     <p className="loading-message">Caricamento in corso...</p>
                 )}
-
             </section>
             
             <div className="coffee-details-btn">

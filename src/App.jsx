@@ -3,6 +3,7 @@ import { GlobalProvider } from './context/GlobalContext';
 import CoffeeList from './pages/CoffeeList';
 import AppLayout from './layout/AppLayout';
 import CoffeeDetails from './pages/CoffeeDetails';
+import Prova from './pages/Prova';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
           <Route element={<AppLayout />}>
             <Route path="/" element={<CoffeeList />} />
             <Route path="/specialtycoffees/:id" element={<CoffeeDetails />} />
+            <Route path="/prova" element={<Prova />} />
           </Route>
         </Routes>
       </BrowserRouter>

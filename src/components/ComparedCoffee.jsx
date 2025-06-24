@@ -28,7 +28,7 @@ function ComparedCoffee({ coffeeOne, id }) {
     // Filtro lista dei caffè per escludere il caffè attualmente selezionato
     const filteredSelector = useMemo(() => {
         return coffeeList.filter(c => c.id !== id);
-    }, [coffeeList, numId, id]);
+    }, [coffeeList, id]);
 
     // Selezionatore per il caffè da confrontare
     const handleSelectChange = (e) => {

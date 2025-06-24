@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useMemo, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import useCoffee from "../hooks/useCoffee";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark as faSolidBookmark } from "@fortawesome/free-solid-svg-icons";
@@ -12,8 +12,31 @@ function GlobalProvider({ children }) {
 
     const { coffeeList, getCoffeeList, showCoffee } = useCoffee();
     const [showFavorites, setShowFavorites] = useState(false);
-    const [favourites, setFavourites] = useState([]);
     const [showComparedCoffee, setShowComparedCoffee] = useState(false);
+    const [favourites, setFavourites] = useState(() => {
+        try {
+            // Recupero i preferiti da localStorage all'avvio dell'app
+            const storedFav = localStorage.getItem('favouritesCoffees');
+    
+            // Se esistono preferiti salvati, li restituisco come array, altrimenti restituisco un array vuoto
+            return storedFav ? JSON.parse(storedFav) : [];
+            
+        } catch (error) {
+            // In caso di errore nel recupero da localStorage, (es. utente in modalità incognito oppure è la prima volta che apre l'app)
+            console.error("Errore nel recupero dei preferiti da localStorage:", error);
+            return [];
+        }
+    });
+
+    useEffect(() => {
+        try {
+            // Impostazione dei preferiti da localStorage
+            localStorage.setItem('favouritesCoffees', JSON.stringify(favourites));
+
+        } catch(error) {
+            console.error("Errore nel recupero dei preferiti da localStorage:", error);
+        }
+    }, [favourites])
 
     // Funzione per ottenere tutte le varità di caffè
     const categories = useMemo(() => {
@@ -39,9 +62,7 @@ function GlobalProvider({ children }) {
 
     // Funzione per rimuovere un caffè dai preferiti dal modale dei preferiti
     const removeFromFavourites = useCallback((coffeeId) => {
-        if (favourites.includes(coffeeId)) {
-            setFavourites(prev => prev.filter(id => id !== coffeeId));
-        };
+        setFavourites(prev => prev.filter(id => id !== coffeeId));
     }, [favourites]);
 
     // Gestione icone dei preferiti
