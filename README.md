@@ -15,3 +15,5 @@ Salva i tuoi caffè preferiti in una lista dedicata per ritrovarli facilmente. L
 
 ##### _Confronto interattivo tra caffè_
 Metti a confronto due caffè fianco a fianco per valutarne le differenze. Un sistema di indicatori colorati ti aiuta a visualizzare rapidamente quale caffè ha valori maggiori o minori per ciascuna caratteristica.
+
+![homepage](public\know-your-coffee.PNG)
